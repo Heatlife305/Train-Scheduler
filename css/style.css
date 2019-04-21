@@ -1,0 +1,9 @@
+.jumbotron {
+    text-align: center;
+    background: grey;
+}
+
+.panel-heading {
+    background: grey;
+    padding: 5px;
+}
