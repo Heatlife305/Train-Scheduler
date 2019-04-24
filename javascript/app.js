@@ -64,6 +64,34 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log(trainTime);
     console.log(trainFrequency);
 
+    //Moment js to calculate next arrival
+    var tFrequency = childSnapshot.val().frequency;
+
+    // First train starts at 03:30
+    var trainTime = childSnapshot.val().time;
+
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var timeConverted = moment(trainTime, "hh:mm").subtract(1, "years");
+    
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+    // Time difference
+    var diffTime = moment().diff(moment(timeConverted, "minutes"));
+    console.log("TIME DIFFERENCE: " + diffTime);
+
+    // Time apart (remainder)
+    var tRemainder = diffTime % tFrequency;
+    console.log(tRemainder);
+
+    // Minutes until next arrival
+    var tMinAway = tFrequency - tRemainder;
+    console.log(tMinAway);
+
+    // Arrival time
+    var tArrival = moment().add(tMinAway, "minutes").format("hh:mm A");
+    console.log("ARRIVAL TIME: " + tArrival);
 });
 
 
