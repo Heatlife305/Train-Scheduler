@@ -87,11 +87,24 @@ database.ref().on("child_added", function(childSnapshot) {
 
     // Minutes until next arrival
     var tMinAway = tFrequency - tRemainder;
-    console.log(tMinAway);
+    console.log("Minutes away: " + tMinAway);
 
     // Arrival time
     var tArrival = moment().add(tMinAway, "minutes").format("hh:mm A");
     console.log("ARRIVAL TIME: " + tArrival);
+
+    // Creates new row 
+    var newRow = $("<tr>").append(
+        $("<td>").text(childSnapshot.val().name),
+        $("<td>").text(childSnapshot.val().destination),
+        $("<td>").text(childSnapshot.val().time),
+        $("<td>").text(childSnapshot.val().frequency),
+        $("<td>").text(tArrival)
+    );
+
+    // Append new row to the table
+    $("#table-data").append(newRow)
+
 });
 
 
