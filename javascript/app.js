@@ -97,8 +97,8 @@ database.ref().on("child_added", function(childSnapshot) {
     var newRow = $("<tr>").append(
         $("<td>").text(childSnapshot.val().name),
         $("<td>").text(childSnapshot.val().destination),
-        $("<td>").text(childSnapshot.val().time),
         $("<td>").text(childSnapshot.val().frequency),
+        $("<td>").text(tMinAway),
         $("<td>").text(tArrival)
     );
 

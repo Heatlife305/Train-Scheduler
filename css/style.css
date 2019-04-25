@@ -1,20 +1,30 @@
 .jumbotron {
     text-align: center;
-    background: blue;
+    background: seagreen;
     color: white;
+    margin-top: 10px;
 }
 
 .panel-heading {
-    background: green;
+    background: orange;
     color: white;
     padding: 5px;
 }
 
-body {
+thead{
+    border: 1px solid gray;
+}
+
+#table-data {
+    border: 1px solid lightgray;
 }
 
 .panel-body {
     padding: 15px;
     margin-bottom: 10px;
     border: 1px solid lightgray;
+}
+
+label {
+    font-weight: bold;
 }
